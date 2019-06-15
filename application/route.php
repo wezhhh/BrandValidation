@@ -8,14 +8,10 @@
 // +----------------------------------------------------------------------
 // | Author: liu21st <liu21st@gmail.com>
 // +----------------------------------------------------------------------
-
-return [
-    '__pattern__' => [
-        'name' => '\w+',
-    ],
-    '[hello]'     => [
-        ':id'   => ['index/hello', ['method' => 'get'], ['id' => '\d+']],
-        ':name' => ['index/hello', ['method' => 'post']],
-    ],
-
-];
+use think\Route;
+Route::rule('/index/index','/index/Index/index');
+Route::rule('/brand/index','/index/Brand/index');
+Route::rule('/brand/add_view','/index/Brand/add_view');
+Route::rule('/brand/list','/index/Brand/list');
+Route::rule('/upload/upload_img','/index/Upload/upload_img');
+//Route::rule('codetype/add_view/','index/codetype/add_view/');

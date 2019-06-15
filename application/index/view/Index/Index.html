@@ -33,17 +33,16 @@
                     <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
                     <ul class="layui-nav layui-nav-tree"  lay-filter="test">
                         <li class="layui-nav-item  layui-nav-itemed">
-                            <a class="" href="javascript:;">所有商品</a>
+                            <a class="" href="javascript:;">品牌</a>
                             <dl class="layui-nav-child">
-                                <dd><a href="javascript:;">列表一</a></dd>
-                                <dd><a href="javascript:;">列表二</a></dd>
-                                <dd><a href="javascript:;">列表三</a></dd>
+                                <dd onclick="Jump('/brand/index')"><a href="javascript:;">品牌列表</a></dd>
+                                <dd onclick="Jump('/brand/add_view')"><a href="javascript:;" >品牌添加</a></dd>
                             </dl>
                         </li>
                         <li class="layui-nav-item">
-                            <a href="javascript:;">解决方案</a>
+                            <a href="javascript:;">防伪码</a>
                             <dl class="layui-nav-child">
-                                <dd><a href="javascript:;">列表一</a></dd>
+                                <dd><a href="javascript:;">防伪码列表</a></dd>
                                 <dd><a href="javascript:;">列表二</a></dd>
                             </dl>
                         </li>
@@ -53,7 +52,7 @@
 
             <div class="layui-body">
                 <!-- 内容主体区域 -->
-                <iframe frameborder="0" id="iframe" name="iframe" src="/index/CodeType/index"></iframe>
+                <iframe frameborder="0" id="iframe" name="iframe" src="/brand/index"></iframe>
             </div>
 
             <div class="layui-footer">
@@ -62,6 +61,7 @@
             </div>
         </div>
     </body>
+    <script src="/static/js/jquery-1.10.2.js"></script>
     <script src="/static/layui/layui.js"></script>
     <script>
         //JavaScript代码区域
@@ -69,5 +69,11 @@
             var element = layui.element;
 
         });
+    </script>
+    <script>
+        //点击切换iframe路径事件
+        function Jump(url=''){
+            $('#iframe').attr('src',url);
+        }
     </script>
 </html>
