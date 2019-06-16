@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>品牌</title>
+    <link rel="stylesheet" href="/static/css/index.css">
+    <link rel="stylesheet" href="/static/layui/css/layui.css">
+</head>
+<body>
+    <div class="layui-row">
+        <button class="layui-btn" type="button" id="excel" style="display: none">导入excel</button>
+    </div>
+    <table class="layui-hide" id="test" lay-filter="test"></table>
+    <script type="text/html" id="toolbarDemo">
+        <div class="layui-btn-container">
+            <button class="layui-btn layui-btn-sm" lay-event="ExcelData">导入excel</button>
+        </div>
+    </script>
+
+    <script type="text/html" id="barDemo">
+        <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+        <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+    </script>
+</body>
+<div id="edit_form" style="display: none">
+    <form class="layui-form" method="post" action="" enctype="multipart/form-data">
+        <div class="layui-form-item">
+            <label class="layui-form-label">合作商名称</label>
+            <div class="layui-input-block">
+                <input type="text" name="name" lay-verify="name" autocomplete="off" placeholder="请输入品牌名称" class="layui-input" value="">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">合作品牌</label>
+            <div class="layui-input-block">
+                <select id="selected" name="cooperator" lay-filter="cooperator">
+                    <option value="">请选择</option>
+                    {volist name='data' id='v'}
+                    <option value="{$v['id']}">{$v['name']}</option>
+                    {/volist}
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">合作商图片</label>
+            <div class="layui-input-block">
+                <button type="button" class="layui-btn" id="test1">上传图片</button>
+                <div class="layui-upload-list">
+                    <img class="layui-upload-img brand_img" id="demo1" style="height: 160px;width: auto;">
+                    <p id="demoText"></p>
+                </div>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">创建时间</label>
+            <div class="layui-input-block" id="create_time" style="line-height: 36px;">
+
+            </div>
+        </div>
+        <input type="hidden" name="id" value=""/>
+        <input type="hidden" name="url" value=""/>
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button>
+                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+            </div>
+        </div>
+    </form>
+</div>
+<script src="/static/js/jquery-1.10.2.js"></script>
+<script src="/static/layui/layui.js"></script>
+<script>
+    //毫秒时间戳转日期格式
+    function time(time) {
+        var date = new Date(time);
+        Y = date.getFullYear() + '-';
+        M = (date.getMonth()+1 < 10 ? '0'+(date.getMonth()+1) : date.getMonth()+1) + '-';
+        D = date.getDate() + ' ';
+        h = date.getHours() + ':';
+        m = date.getMinutes() + ':';
+        s = date.getSeconds();
+        return Y+M+D+h+m+s; //呀麻碟
+    }
+
+    layui.use(['upload','form','table'], function(){
+        var $ = layui.jquery
+            ,upload = layui.upload
+            ,form = layui.form
+            ,table = layui.table;
+
+        table.render({
+            elem: '#test'
+            ,url:'/index/cooperator/list'
+            ,title: '重点合作商列表'
+            ,toolbar: '#toolbarDemo'
+            ,id:'testTable'
+            ,cols: [[
+                {type: 'checkbox', fixed: 'left'}
+                ,{field:'id', title:'ID', width:80, fixed: 'left', unresize: true, sort: true}
+                ,{field:'name', title:'合作商名称'}
+                ,{field:'img', title:'合作商图片',templet: function(res){
+                    return '<img src="'+res.img+'">';
+                }}
+                ,{field:'brand_name', title:'品牌'}
+                ,{field:'time', title:'创建时间',templet: function(res){
+                    return '<em>'+ time(res.time*1000) +'</em>';
+                }}
+                ,{fixed: 'right', title:'操作', toolbar: '#barDemo'}
+                ,{field:'brand_id', title:'品牌id'}
+            ]]
+            ,done: function () {
+                //隐藏列
+                $("[data-field='brand_id']").css('display','none');
+            }
+        });
+
+        //监听工具条
+        table.on('tool(test)', function(obj){ //注：tool是工具条事件名，test是table原始容器的属性 lay-filter="对应的值"
+            var data = obj.data; //获得当前行数据
+            var layEvent = obj.event; //获得 lay-event 对应的值（也可以是表头的 event 参数对应的值）
+            var tr = obj.tr; //获得当前行 tr 的DOM对象
+            console.log('data',data);
+            if(layEvent === 'del'){ //删除
+                layer.confirm('真的删除么', function(index){
+                    $.ajax({
+                        url:'/index/cooperator/del'
+                        ,type:'POST'
+                        ,data:{
+                            id:data.id
+                        }
+                        ,success:function (data) {
+                            var obj = JSON.parse(data);
+                            layer.msg(obj.msg);
+                            //表的id 然后重载
+                            table.reload("testTable",{});
+                        }
+                    })
+                });
+            } else if(layEvent === 'edit'){ //编辑
+                $("#create_time").html(time(data.time*1000));
+                $('#demo1').attr('src', data.img);
+                $('input[name=url]').val(data.img);
+                $('input[name=name]').val(data.name);
+                $('input[name=id]').val(data.id);
+                $('#selected').find("option[value="+data.brand_id+"]").attr('selected',true);
+                form.render();
+                //页面层
+                layer.open({
+                    type: 1,
+                    title: '品牌修改', //加上边框
+                    area: ['60%', '500px'], //宽高
+                    content: $("#edit_form")
+                });
+            }
+        });
+
+        //普通图片上传
+        upload.render({
+            elem: '#test1'
+            ,url: '/index/upload/upload_img'
+            ,before: function(obj){
+                //预读本地文件示例，不支持ie8
+                obj.preview(function(index, file, result){
+                    $('#demo1').attr('src', result); //图片链接（base64）
+                });
+            }
+            ,done: function(res){
+                //如果上传失败
+                if(res.code == 200){
+                    $('input[name=url]').val(res.data.url);
+                    return layer.msg('上传成功');
+                }else{
+                    //上传失败
+                    return layer.msg(res.msg);
+                }
+
+            }
+        });
+
+        //自定义验证规则
+        form.verify({
+            name:function (value) {
+                if(value.length < 1){
+                    return '品牌名不能为空';
+                }
+            }
+        });
+        //监听表单提交
+        form.on('submit(demo1)',function (data) {
+            console.log(data);
+            if(data.field.cooperator == ''){
+                layer.msg('请选择合作品牌');
+                return false;
+            }
+            var src = $('#demo1').attr('src');
+            //如果img标签没有路径 则表示用户没用上传图片
+            if(typeof(src) == "undefined"){
+                layer.msg('请上传品牌图片');
+            }else{
+                $.ajax({
+                    url:'/index/cooperator/upd'
+                    ,type:'POST'
+                    ,data:{
+                        id:data.field.id,
+                        name:data.field.name,
+                        img:data.field.url,
+                        brand_id:data.field.cooperator
+                    }
+                    ,success:function (data) {
+                        //将json字符串转对象
+                        var obj = JSON.parse(data);
+                        layer.msg(obj.msg);
+                        if(obj.code == 200){
+                            //刷新当前页面
+                            setTimeout("location.reload()",1000);
+                        }
+                    }
+                });
+            }
+            return false;
+        })
+
+
+        //头工具栏事件
+        table.on('toolbar(test)', function(obj){
+            var checkStatus = table.checkStatus(obj.config.id);
+            switch(obj.event){
+                case 'ExcelData'://excel导入
+                    $('#excel').click();//模拟点击导入excel按钮
+                    break;
+                case 'getCheckLength'://退货
+                    break;
+                case 'upload_photo'://图片上传
+                    break;
+            }
+        });
+
+        //导入excel
+        upload.render({
+            elem:'#excel'
+            ,url:'/index/upload/excel_import'
+            ,accept:'file'//普通文件
+            ,multiple:true
+            ,size:30720 //上传的文件不能超过30M
+            ,done: function (res){
+                console.log(res.msg);
+                if(res.msg == '上传文件后缀不允许'){
+                    layer.msg('请上传正确的excel文件');
+                }else{
+                    layer.msg(res.msg);
+                    setTimeout("window.location.reload()",1600);
+                }
+            }
+        });
+    });
+</script>
+</html>

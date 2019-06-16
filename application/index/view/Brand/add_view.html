@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/static/layui/css/layui.css">
+    <link rel="stylesheet" href="/static/css/add_view.css">
+</head>
+<body>
+    <div id="table">
+        <h1>添加品牌</h1>
+        <form class="layui-form" method="post" action="" enctype="multipart/form-data">
+            <div class="layui-form-item">
+                <label class="layui-form-label">品牌名称</label>
+                <div class="layui-input-block">
+                    <input type="text" name="name" lay-verify="name" autocomplete="off" placeholder="请输入品牌名称" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">上传品牌图</label>
+                <div class="layui-input-block">
+                    <button type="button" class="layui-btn" id="test1">上传图片</button>
+                    <div class="layui-upload-list">
+                        <img class="layui-upload-img brand_img" id="demo1">
+                        <p id="demoText"></p>
+                    </div>
+                </div>
+            </div>
+            <input type="hidden" name="url" value=""/>
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button>
+                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+<script src="/static/js/jquery-1.10.2.js"></script>
+<script src="/static/layui/layui.js"></script>
+<script>
+    layui.use(['upload','form'], function(){
+        var $ = layui.jquery
+            ,upload = layui.upload
+            ,form = layui.form;
+
+        //普通图片上传
+        upload.render({
+            elem: '#test1'
+            ,url: '/index/upload/upload_img'
+            ,before: function(obj){
+                //预读本地文件示例，不支持ie8
+                obj.preview(function(index, file, result){
+                    $('#demo1').attr('src', result); //图片链接（base64）
+                });
+            }
+            ,done: function(res){
+                //如果上传失败
+                if(res.code == 200){
+                    $('input[name=url]').attr('value',res.data.url);
+                    return layer.msg('上传成功');
+                }else{
+                    //上传失败
+                    return layer.msg(res.msg);
+                }
+
+            }
+        });
+
+        //自定义验证规则
+        form.verify({
+            name:function (value) {
+                if(value.length < 1){
+                    return '品牌名不能为空';
+                }
+            }
+        });
+        //监听表单提交
+        form.on('submit(demo1)',function (data) {
+            console.log(data);
+            var src = $('#demo1').attr('src');
+            //如果img标签没有路径 则表示用户没用上传图片
+            if(typeof(src) == "undefined"){
+                layer.msg('请上传品牌图片');
+            }else{
+                $.ajax({
+                    url:'/index/brand/add'
+                    ,type:'POST'
+                    ,data:{
+                        name:data.field.name,
+                        img:data.field.url
+                    }
+                    ,success:function (data) {
+                        //将json字符串转对象
+                        var obj = JSON.parse(data);
+                        layer.msg(obj.msg);
+                        if(obj.code == 200){
+                            //刷新当前页面
+                            setTimeout("location.reload()",1000);
+                        }
+                    }
+                });
+            }
+            return false;
+        })
+    });
+</script>
+</html>
