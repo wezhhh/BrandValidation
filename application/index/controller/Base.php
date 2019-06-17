@@ -56,9 +56,10 @@ class Base extends Controller
     }
 
     //Layui表格统一返回
-    public function returnLayui($data=[]){
+    public function returnLayui($count=0,$data=[]){
         return json([
             'code'=>0,
+            'count'=>$count,
             'data'=>$data
         ]);
     }

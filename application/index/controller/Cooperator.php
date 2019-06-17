@@ -37,7 +37,8 @@ class Cooperator extends Base
         $data = model('Cooperator')->gets([
             'Cooperator.status'=>1
         ]);
-        return $this->returnLayui($data);
+        $count = count($data);
+        return $this->returnLayui($count,$data);
     }
 
     //添加

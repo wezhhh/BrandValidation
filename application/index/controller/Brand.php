@@ -78,6 +78,7 @@ class Brand extends Base
         $data = model('Brand')->gets([
             'status'=>1
         ]);
-        return $this->returnLayui($data);
+        $count = count($data);
+        return $this->returnLayui($count,$data);
     }
 }

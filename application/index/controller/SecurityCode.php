@@ -14,19 +14,16 @@ class SecurityCode extends Base
 {
     //防伪码页面
     public function index(){
-        //查询品牌列表进行模板赋值
-        $data = model('Brand')->gets([
-            'status'=>1
-        ],'id,name');
-        $this->assign('data',$data);
         return view();
     }
 
     //防伪码数据
-    public function list(){
-        $data = model('SecurityCode')->gets();
-        $data['code'] = 0;
-        return json($data);
-        return $this->returnLayui($data);
+    public function list($page=1,$limit=10){
+        //配置分页
+        $arr['page'] = ($page-1)*$limit;
+        $arr['limit'] = $limit;
+        $data = model('SecurityCode')->gets([],'*',$arr);
+        $count = model('SecurityCode')->get_count();
+        return $this->returnLayui($count,$data);
     }
 }

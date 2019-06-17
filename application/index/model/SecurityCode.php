@@ -29,18 +29,29 @@ class SecurityCode extends Model
     }
 
     //获取所有防伪码信息
-    public function gets($where=[],$field='*'){
-        return Db::view('SecurityCode',$field)
+    public function gets($where=[],$field='*',$limit=[]){
+        $data = Db::view('SecurityCode',$field)
             ->view('Brand',['name'=>'brand_name'],'SecurityCode.brand_id = Brand.id')
             ->where($where)
-            ->paginate(10)
-            ->each(function ($item){
+            ->limit($limit['page'],$limit['limit'])
+            ->select();
+        if(!empty($data)){
+            foreach ($data as $item){
                 //查询当前防伪码是否属于重点合作商
                 $id = \model('Cooperator')->info([
                     'id'=>$item['cooperator_id']
                 ],'id,name');
                 $item['cooperator_name'] = $item['id'] == 0 ? '无':$id['name'];
-                return $item;
-            });
+            }
+        }
+        return $data;
+    }
+
+    //获取所有防伪码数量
+    public function get_count($where=[],$field='*'){
+        return Db::view('SecurityCode',$field)
+            ->view('Brand',['name'=>'brand_name'],'SecurityCode.brand_id = Brand.id')
+            ->where($where)
+            ->count();
     }
 }
