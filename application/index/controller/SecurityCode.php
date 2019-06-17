@@ -21,4 +21,12 @@ class SecurityCode extends Base
         $this->assign('data',$data);
         return view();
     }
+
+    //防伪码数据
+    public function list(){
+        $data = model('SecurityCode')->gets();
+        $data['code'] = 0;
+        return json($data);
+        return $this->returnLayui($data);
+    }
 }

@@ -1,0 +1,492 @@
+
+
+
+body{
+    background: #e7e2e0;
+}
+/* 臻仕 */
+    .index-page .logo{
+        background-image: url(../img/logo.png);
+        background-size: 100%;
+        background-repeat: no-repeat;
+        width: 400px;
+        margin: 0 auto;
+        margin-top: 100px;
+        height: 46px;
+        position: relative;
+        z-index: 2;
+    }
+    .index-page .logo2{
+        background-image: url(../img/footer-logo.png);
+        background-size: 100%;
+        background-repeat: no-repeat;
+        width: 300px;
+        margin: 0 auto;
+        margin-top: 0px;
+        margin-top: 10px;
+        height: 120px;
+        position: relative;
+        z-index: 2;
+    }
+    .index-page .title{
+        background-image: url(../img/title.png);
+        background-size: 100%;
+        background-repeat: no-repeat;
+        width: 400px;
+        margin: 50px auto 10px auto;
+        height: 46px;
+        position: relative;
+        z-index: 2;
+    }
+    .index-page .content{
+        position: relative;
+        z-index: 2;
+        max-width: 1140px;
+        margin: 0 auto;
+        color: #fff;
+        padding: 20px;
+        height: 600px;
+    }
+    .index-page .form{
+        margin-top: 50px;
+        background-color: rgba(0,0,0,.25);
+        padding:40px;
+        display: inline-block;
+        border-radius: 10px;
+        position: relative;
+        z-index: 2;
+    }
+    .index-page .bg1{
+        background-image: url(../img/bg1.jpg);
+        background-size: 100%;
+        background-repeat: no-repeat;
+        width: 750px;
+        height: 100%;
+        position: absolute;
+        right: 0;
+        top: 0;
+        z-index: 1;
+        background-position-y: center;
+    }
+    .index-page .form .inputs span{
+        font-size: 24px;
+        margin-right: 20px;
+    }
+    .index-page .form .inputs input{
+        border: 2px solid #797360;
+        background-color: #fff;
+        padding: 5px 10px;
+        height: 30px;
+    }
+    .index-page .form .buttons button{
+        background-color: #fff;
+        border: 0;
+        border-right: 2px solid #636262;
+        border-bottom: 2px solid #636262;
+        padding: 10px 20px;
+        margin: 20px 25px;
+    }
+    .index-page .form .txt p{
+        font-size: 14px;
+        line-height: 24px;
+        padding-left: 15px;
+        background-image: url(../img/dian.png);
+        background-size: 7px 7px;
+        background-repeat: no-repeat;
+        background-position-y: center;
+    }
+
+    /* end */
+    .index-end-page .form{
+        padding: 0;
+        background-color: transparent;
+        color: #444;
+        margin-top: 120px;
+    }
+    .index-end-page .txt-content{
+        border: 2px solid #896c49;
+        border-radius: 10px;
+        text-align: center;
+        padding: 40px;
+        position: relative;
+    }
+    .index-end-page .txt-content i{
+        background-image: url(../img/icon1.png);
+        background-size: 100%;
+        background-repeat: no-repeat;
+        background-position-y: center;
+        position: absolute;
+        top: -36px;
+        left: 0;
+        right: 0;
+        margin: auto;
+        display: block;
+        width: 70px;
+        height: 70px;
+    }
+    .index-end-page .txt-content strong{
+        font-size: 24px;
+        margin: 15px 0;
+        display: block;
+        font-weight: 300;
+    }
+    .index-end-page .txt-content p{
+        margin-bottom: 20px;
+        font-size: 22px;
+        color: #555;
+        font-weight: 300;
+    }
+    .index-end-page .end-tip-txt{
+        margin: 10px;
+        font-size: 14px;
+        color: #555;
+        font-weight: 300;
+    }
+    .index-end-page .end-t1{
+        margin: 35px 0;
+    }
+    .index-end-page .m-box{
+        display: none;
+        background-color: #896c49;
+        padding: 20px 0;
+        text-align: center;
+        color: #fff;
+    }
+    .index-end-page .m-header{
+        display: none;
+    }
+    .index-end-page .m-header img{
+        width: 100%;
+    }
+    .index-end-page .m-h-box{
+        padding: 20px;
+    }
+    .index-end-page .m-h-left{
+        width: 45%;
+        
+    }
+    .index-end-page .m-h-right{
+        width: 55%;
+    }
+
+    /* end page 2 */
+        .index-end-page-2{
+            background-image: url(../img/bg2.jpg);
+            background-size: 100%;
+        }
+        .index-end-page-2 .logo{
+            background-image: url(../img/logo2.png);
+            height: 100px;
+        }
+        .index-end-page-2 .form{
+            display: block;
+        }
+        .index-end-page-2 .content{
+            max-width: 540px;
+            height: 500px;
+        }
+        .index-end-page-2 .logo2{
+            background-image: url(../img/logo.png);
+    }
+
+    /* end page 3 */
+        .index-end-page-3{
+            background-image: url(../img/bg3.jpg);
+        }
+        .index-end-page-3 .logo{
+            background-image: url(../img/logo3.png);
+            width: 350px;
+            height: 180px;
+        }
+        .index-end-page-3 .form{
+            margin-top: 80px;
+            color: #fff;
+        }
+        .index-end-page-3 .txt-content{
+            border: 2px solid #fff;
+        }
+        .index-end-page-3 .txt-content i{
+            background-image: url(../img/icon2.png);
+        }
+        .index-end-page-3 .txt-content p,
+        .index-end-page-3 .end-tip-txt{
+            color: #fff;
+        }
+        .index-end-page-3 .logo2 {
+            background-image: url(../img/footer-logo2.png);
+        }
+
+/* 艾仕 */
+    .as-page{
+        background: #000;
+    }
+    .as-page .logo{
+        background-image: url(../img/logo4.png);
+        height: 95px;
+        margin-top: 50px;
+        width: 297px;
+    }
+    .as-page .title{
+        background-image: url(../img/title1.png);
+    }
+    .as-page .bg1{
+        background-image: url(../img/bg-r2.png);
+    }
+    .as-page .form{
+        background: transparent;
+        border: 2px solid #fff;
+        border-radius: 10px;
+    }
+    .as-page-end .form{
+        border: none;
+        color: #fff;
+    }
+    .as-page-end .txt-content{
+        border: 2px solid #fff;
+    }
+    .as-page-end .txt-content p,
+    .as-page-end .end-tip-txt{
+        color: #fff;
+    }
+    .as-page-end .txt-content i{
+        background-image: url(../img/icon2.png);
+    }
+
+    /* 系列1 */
+    .as-page-end-2{
+        background-color: #000;
+        background-image:none;
+    }
+    .as-page-end-2 .logo{
+        background-image: url(../img/logo5.png);
+        width: 297px;
+        height: 189px;
+    }
+    .as-page-end-2 .logo2 {
+        background-image: url(../img/logo4.png);
+        width: 290px;
+    }
+
+@media screen and (max-width: 750px) {
+    .index-page .logo,
+    .index-page .title{
+        width: 70%;
+        margin-top: 40px;
+    }
+    .index-page .content{
+        width: auto;
+    }
+    .index-page .bg1{
+        width: 100%;
+    }
+    .index-page .form{
+        margin-top: 10px;
+        display: block;
+    }
+
+    /* end */
+    .index-end-page .logo,
+    .index-end-page .logo2,
+    .index-end-page .bg1{
+        display: none;
+    }
+    .index-end-page .m-box{
+        display: block;
+    }
+    .index-end-page .m-header{
+        display: flex;
+    }
+    .index-end-page .m-box-footer{
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+    }
+
+    /* end2 */
+    .index-end-page-2 .logo,
+    .index-end-page-2 .logo2{
+        display: block;
+    }
+    .index-end-page-2 .logo{
+        width: 300px;
+    }
+    .index-end-page-2 .content {
+        height: auto;
+    }
+    .index-end-page-2 .logo2{
+        height: 45px;
+    }
+    .index-end-page-2 {
+        background-image: url(../img/m-bg2.jpg);
+    }
+    .index-end-page-3 {
+        background-image: url(../img/m-bg3.jpg);
+    }
+    
+    /* 艾仕 */
+    .as-page .logo,
+    .as-page .title{
+        width: 297px;
+    }
+    .as-page .logo,
+    .as-page .bg1{
+        display: block;
+    }
+    .as-page .logo{
+        margin-bottom: 20px;
+    }
+    .as-page-end-2 {
+        background-color: #000;
+        background-image: none;
+    }
+    .as-page-end-2 .logo {
+        width: 290px;
+    }
+    .as-page-end-2 .logo2 {
+        background-image: url(../img/logo4.png);
+        width: 290px;
+        height: 100px;
+    }
+}
+@media screen and (max-width: 500px) {
+    .index-page .content{
+        height: 350px;
+    }
+    .index-end-page .m-h-box{
+        padding: 10px;
+    }
+    .index-end-page .txt-content strong{
+        font-size: 20px;
+    }
+    .index-end-page .txt-content p{
+        font-size: 18px;
+    }
+    .index-end-page .end-t1{
+        margin: 25px 0; 
+    }
+    .as-page .form{
+        border: none;
+    }
+    .as-page .content{
+        
+        padding: 40px;
+    }
+    .as-page .txt-content{
+        background-color: rgba(0,0,0,.4);
+    }
+
+}
+@media screen and (max-width: 414px) {
+    .index-page .logo,
+    .index-page .title{
+        width: 70%;
+        margin-top: 30px;
+        height: 30px;
+    }
+    .index-page .form .txt p{
+        font-size: 12px;
+    }
+    .index-page .bg1{
+        height: 478px;
+        background-size: 140%;
+        background-position: top center;
+    }
+    .index-page .logo2{
+        width: 200px;
+        height: 80px;
+        margin-top: 100px;
+    }
+
+    .index-end-page .txt-content strong{
+        font-size: 18px;
+    }
+    .index-end-page .txt-content p{
+        font-size: 16px;
+    }
+    .index-end-page .txt-content{
+        padding: 30px;
+    }
+    /* end2 */
+    .index-end-page-2 .logo {
+        height: 130px;
+    }
+    .index-end-page-2 .content {
+        height: auto;
+    }
+    /* end3 */
+    .index-end-page-3 .logo {
+        height: 180px;
+    }
+
+    /* 艾仕 */
+    .as-page .logo{
+        height: 95px;
+        margin-top: 50px;
+        width: 250px;
+    }
+    .as-page .bg1{
+        background-size: 110%;
+    }
+
+}
+
+@media screen and (max-width: 375px) {
+    .index-page .form{
+        padding: 20px;
+    }
+    .index-page .logo2{
+        margin-top: 50px;
+    }
+    .index-end-page .content{
+        padding: 0;
+    }
+    .index-end-page .txt-content{
+        padding: 10px;
+    }
+
+    /* end2 */
+    .index-end-page-2 .logo2{
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 200px;
+        margin: auto;
+        right: 0;
+    }
+
+
+    .as-page .txt-content,
+    .as-page-end-2 .txt-content{
+        padding: 30px 10px 10px 10px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .index-page .content{
+        padding: 10px;
+    }
+    .index-page .form .inputs span {
+        font-size: 22px;
+        margin-right: 10px;
+    }
+    .index-page .logo2{
+        margin-top: 20px;
+    }
+
+    .index-end-page .form{
+        padding: 0;
+    }
+    .index-end-page .txt-content{
+        padding-top: 40px;
+    }
+    .index-end-page .txt-content strong{
+        font-size: 16px;
+    }
+    .index-end-page .txt-content p{
+        font-size: 14px;
+    }
+    .index-end-page .m-h-box {
+        padding: 5px;
+    }
+}
