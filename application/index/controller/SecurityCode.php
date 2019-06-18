@@ -24,6 +24,7 @@ class SecurityCode extends Base
         $arr['limit'] = $limit;
         $data = model('SecurityCode')->gets([],'*',$arr);
         $count = model('SecurityCode')->get_count();
+
         return $this->returnLayui($count,$data);
     }
 }

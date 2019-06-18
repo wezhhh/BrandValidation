@@ -48,9 +48,9 @@ class SecurityCode extends Model
     }
 
     //获取所有防伪码数量
-    public function get_count($where=[],$field='*'){
-        return Db::view('SecurityCode',$field)
-            ->view('Brand',['name'=>'brand_name'],'SecurityCode.brand_id = Brand.id')
+    public function get_count($where=[]){
+        return Db::view('SecurityCode','id')
+            ->view('Brand','name','SecurityCode.brand_id = Brand.id')
             ->where($where)
             ->count();
     }
