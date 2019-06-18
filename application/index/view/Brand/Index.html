@@ -85,13 +85,13 @@
                 {type: 'checkbox', fixed: 'left'}
                 ,{field:'id', title:'ID', width:80, fixed: 'left', unresize: true, sort: true}
                 ,{field:'name', title:'品牌名称'}
-                ,{field:'img', title:'品牌图片',templet: function(res){
-                    return '<img src="'+res.img+'">';
-                }}
+                // ,{field:'img', title:'品牌图片',templet: function(res){
+                //     return '<img src="'+res.img+'">';
+                // }}
                 ,{field:'time', title:'创建时间',templet: function(res){
                     return '<em>'+ time(res.time*1000) +'</em>';
                 }}
-                ,{fixed: 'right', title:'操作', toolbar: '#barDemo'}
+                // ,{fixed: 'right', title:'操作', toolbar: '#barDemo'}
             ]]
         });
 
