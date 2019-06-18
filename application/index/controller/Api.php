@@ -13,11 +13,12 @@ use think\Db;
 
 class Api extends Base
 {
-    //防伪码验证
-    public function verification($code=''){
+    //防伪码验证  site网页123   code防伪码  brand_id 品牌id
+    public function verification($site=0,$code='',$brand_id=0){
         if(!empty($code)){
             $data = model('SecurityCode')->info([
-                'security_code'=>$code
+                'security_code'=>$code,
+                'brand_id'=>$brand_id
             ]);
             if($data){
                 Db::name('SecurityCode')->where(['security_code'=>$code])->setInc('count');
@@ -29,16 +30,39 @@ class Api extends Base
                         'query_time'=>time()
                     ]);
                     $arr['count'] = 0;
+//                    $this->returnJson('success','您查询的产品为<b>第1次</b>验证');
                 }else{
                     $arr['count'] = $data['count']+1;
                     $arr['time'] = date('Y-m-d H:i:s',$data['query_time']);
+//                    $this->returnJson('success','您查询的产品为<b>第'.($data['count']+1).'次验证');
                 }
             }else{
 //                $this->returnJson('error','没有此防伪码,请核对您输入的防伪码是否和商品上的防伪码一致,如果一致则可能为假货。');
             }
+
+
+            //brand_id  1德国艾仕壁纸 2 DENO 德诺壁纸软装 3 HARVEST 臻仕家居
+            //如果为臻仕页面 且当前防伪码属于蓝色情人
+            if($site == 1 && $data['cooperator_id'] == 4){
+                $class = 2;
+            }else if($site == 1 &&  $data['cooperator_id'] == 5){
+                //属于费雷
+                $class = 3;
+            }else if($site == 1){
+                //只属于臻仕
+                $class = 1;
+            }else if($site == 2 && $data['cooperator_id'] == 1){
+                //如果为艾仕页面 且当前防伪码属于范思哲
+                $class = 2;
+            }else if($site == 2){
+                //只属于艾仕
+                $class = 1;
+            }else{
+                $this->returnJson('success','404');
+            }
             $arr['code'] = $code;
             $this->assign('data',$arr);
-            return view('index/site1_class1');
+            return view('index/site'.$site.'_class'.$class);
         }else{
             $this->returnJson('error','请输入防伪码');
         }

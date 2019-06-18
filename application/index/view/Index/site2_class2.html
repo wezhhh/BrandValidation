@@ -15,11 +15,26 @@
             
 
             <div class="content">
-                <!--PHP 第一次查询 -->
-                <div class="form" style="display: none;">
+                {if condition="!isset($data['count'])"}
+                <!--PHP 没有此防伪码 -->
+                <div class="form">
                     <div class="txt-content">
                         <i></i>
-                        <strong>本次防伪码: H1000010</strong>
+                        <strong>本次防伪码: {$data['code']}</strong>
+                        <div class="end-t1">
+                            <p>注意！没有此防伪码,</p>
+                            <p>请核对您输入的防伪码是否和商品上的防伪码一致。</p>
+                            <p>如果一致则可能为假货!</p>
+                        </div>
+                    </div>
+                    <p class="end-tip-txt">*如果您对本次查询结果有疑问，请联系您购买产品的供应商</p>
+                </div>
+                {elseif condition="$data['count'] == 0"}
+                <!--PHP 第一次查询 -->
+                <div class="form">
+                    <div class="txt-content">
+                        <i></i>
+                        <strong>本次防伪码: {$data['code']}</strong>
                         <div class="end-t1">
                             <p>您所查询的防伪码为首次查询,</p>
                             <p>为德国生产的正品产品。</p>
@@ -28,19 +43,21 @@
                     </div>
                     <p class="end-tip-txt">*如果您对本次查询结果有疑问，请联系您购买产品的供应商</p>
                 </div>
+                {else /"}
                 <!--PHP 多次查询 -->
                 <div class="form">
                     <div class="txt-content">
                         <i></i>
-                        <strong>本次防伪码: H1000010</strong>
+                        <strong>本次防伪码: {$data['code']}</strong>
                         <div class="end-t1">
                             <p>注意!您所查询的防伪码已被查询过,</p>
-                            <p>首次查询时间：2019-7-1: 10:10:01</p>
+                            <p>首次查询时间：{$data['time']}</p>
                         </div>
-                        <strong>此次为第5次验证!请确认,谨防假冒!</strong>
+                        <strong>此次为第{$data['count']}次验证!请确认,谨防假冒!</strong>
                     </div>
                     <p class="end-tip-txt">*如果您对本次查询结果有疑问，请联系您购买产品的供应商</p>
                 </div>
+                {/if}
             </div>
 
             <div class="logo2"></div>
