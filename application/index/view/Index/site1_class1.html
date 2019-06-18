@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>结果页</title>
+        <script src="//cdn.bootcss.com/jquery/1.12.1/jquery.min.js" type="text/javascript"></script>
+        <link rel="stylesheet" href="/static/css/base.css"/>
+        <link rel="stylesheet" href="/static/css/main.css"/>
+    </head>
+    <body>
+        <div class="body index-page index-end-page">
+            
+            <div class="logo"></div>
+            
+            <div class="m-box">认准正品 谨防假冒</div>
+
+            <div class="m-header flex">
+                <div class="m-h-box m-h-left flex">
+                    <div class="flex center">
+                        <p><img src="./img/logo.png"></p>
+                        <p><img src="./img/footer-logo.png"></p>
+                    </div>
+                </div>
+                <div class="m-h-box m-h-right">
+                    <p><img src="./img/bg1.jpg"></p>
+                </div>
+            </div>
+
+            <div class="content">
+                {if condition="!isset($data['count'])"}
+                <!--PHP 没有此防伪码 -->
+                <div class="form">
+                    <div class="txt-content">
+                        <i></i>
+                        <strong>本次防伪码: {$data['code']}</strong>
+                        <div class="end-t1">
+                            <p>注意！没有此防伪码,</p>
+                            <p>请核对您输入的防伪码是否和商品上的防伪码一致。</p>
+                            <p>如果一致则可能为假货!</p>
+                        </div>
+                    </div>
+                    <p class="end-tip-txt">*如果您对本次查询结果有疑问，请联系您购买产品的供应商</p>
+                </div>
+                {elseif condition="$data['count'] == 0"}
+                <!--PHP 第一次查询 -->
+                <div class="form">
+                    <div class="txt-content">
+                        <i></i>
+                        <strong>本次防伪码: {$data['code']}</strong>
+                        <div class="end-t1">
+                            <p>您所查询的防伪码为首次查询,</p>
+                            <p>为德国生产的正品产品。</p>
+                        </div>
+                        <strong>请放心使用</strong>
+                    </div>
+                    <p class="end-tip-txt">*如果您对本次查询结果有疑问，请联系您购买产品的供应商</p>
+                </div>
+                {else /"}
+                <!--PHP 多次查询 -->
+                <div class="form">
+                    <div class="txt-content">
+                        <i></i>
+                        <strong>本次防伪码: {$data['code']}</strong>
+                        <div class="end-t1">
+                            <p>注意!您所查询的防伪码已被查询过,</p>
+                            <p>首次查询时间：{$data['time']}</p>
+                        </div>
+                        <strong>此次为第{$data['count']}次验证!请确认,谨防假冒!</strong>
+                    </div>
+                    <p class="end-tip-txt">*如果您对本次查询结果有疑问，请联系您购买产品的供应商</p>
+                </div>
+                {/if}
+                <div class="bg1"></div>
+            </div>
+
+            <div class="logo2"></div>
+
+            <div class="m-box m-box-footer">品牌热线:4008-212-535</div>
+        </div>
+    </body>
+</html>

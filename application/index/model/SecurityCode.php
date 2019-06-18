@@ -25,7 +25,18 @@ class SecurityCode extends Model
 
     //防伪码详情
     public function info($where=[],$field='*'){
-        return $this->where($where)->field($field)->find();
+        $data = Db::view('SecurityCode',$field)
+            ->view('Brand',['name'=>'brand_name'],'SecurityCode.brand_id = Brand.id')
+            ->where($where)
+            ->find();
+        if(!empty($data)){
+            //查询当前防伪码是否属于重点合作商
+            $id = \model('Cooperator')->info([
+                'id'=>$data['cooperator_id']
+            ],'id,name');
+            $data['cooperator_name'] = $data['id'] == 0 ? '无':$id['name'];
+        }
+        return $data;
     }
 
     //获取所有防伪码信息
@@ -53,5 +64,10 @@ class SecurityCode extends Model
             ->view('Brand','name','SecurityCode.brand_id = Brand.id')
             ->where($where)
             ->count();
+    }
+
+    //防伪码信息修改
+    public function upd($where=[],$data=[]){
+        return $this->allowField(['query_time'])->save($data,$where);
     }
 }
