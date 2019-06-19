@@ -4,8 +4,10 @@ namespace app\index\controller;
 
 class Admin extends Base
 {
-    public function index()
+    public function index($pass='')
     {
-        return view();
+        if($pass == 'admin'){
+            return view();
+        }
      }
 }
