@@ -27,4 +27,24 @@ class SecurityCode extends Base
 
         return $this->returnLayui($count,$data);
     }
+
+    //防伪码添加
+    public function add(){
+        $data = input('post.');
+        $arr = [];
+        foreach ($data['security_code'] as $item){
+            $arr[] = [
+                'security_code'=>$item,
+                'brand_id'=>$data['brand_id'],
+                'cooperator_id'=>$data['cooperator_id'],
+                'time'=>time()
+            ];
+        }
+        $con = model('SecurityCode')->saveAll($arr);
+        if($con){
+            $this->returnJson('success','添加成功');
+        }else{
+            $this->returnJson('error','添加失败');
+        }
+    }
 }
