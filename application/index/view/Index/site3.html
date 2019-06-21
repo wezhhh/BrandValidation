@@ -8,7 +8,7 @@
         <link rel="stylesheet" href="/static/css/base.css"/>
         <link rel="stylesheet" href="/static/css/main.css"/>
     </head>
-    <body class="as-page">
+    <body class="dn-page">
         <div class="body index-page">
             
             <div class="logo"></div>
@@ -31,7 +31,6 @@
                         <p>稍后系统会显示出权威查询结果信息</p>
                     </div>
                 </div>
-                <div class="bg1"></div>
             </div>
         </div>
     </body>
@@ -42,7 +41,7 @@
             if(code == ''){
                 alert('请输入防伪码再进行查询');
             }else{
-                window.location.href = '/index/api/verification?site=2&code='+code+'&brand_id=1';
+                window.location.href = '/index/api/verification?site=3&code='+code+'&brand_id=2';
             }
         }
 

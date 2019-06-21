@@ -41,7 +41,7 @@ body{
     .index-page .content{
         position: relative;
         z-index: 2;
-        max-width: 1140px;
+        max-width: 1240px;
         margin: 0 auto;
         color: #fff;
         padding: 20px;
@@ -107,7 +107,7 @@ body{
         border: 2px solid #896c49;
         border-radius: 10px;
         text-align: center;
-        padding: 40px;
+        padding: 40px 40px 20px 40px;
         position: relative;
     }
     .index-end-page .txt-content i{
@@ -137,13 +137,15 @@ body{
         font-weight: 300;
     }
     .index-end-page .end-tip-txt{
-        margin: 10px;
+        text-align: center;
+        margin: 10px 0;
         font-size: 14px;
         color: #555;
         font-weight: 300;
     }
     .index-end-page .end-t1{
         margin: 35px 0;
+        margin-bottom: 0;
     }
     .index-end-page .m-box{
         display: none;
@@ -267,6 +269,89 @@ body{
         width: 290px;
     }
 
+/* 德诺 */
+    .dn-page{
+        background-image: url(../img/dn-bg.jpg);
+        background-size: 100%;
+    }
+    .dn-page .logo{
+        background-image: url(../img/dn-logo.png);
+        height: 140px;
+    }
+    .dn-page .title{
+        margin-top: 20px;
+    }
+    .dn-page .form{
+        background-color: transparent;
+        border: 3px solid #fff;
+    }
+
+    .dn-end-page-1{
+        background-image: url(../img/dn-bg-2.jpg);
+    }
+    .dn-end-page-1 .logo{
+        background-image: url(../img/dn-logo.png);
+        height: 140px;
+    }
+    .dn-end-page-1 .content{
+        position: relative;
+        left: 100px;
+        top: 50px;
+    }
+    .dn-end-page-1 .txt-content{
+        border-width: 3px;
+        color: #896c49;
+    }
+    .dn-end-page-1 .end-tip-txt,
+    .dn-end-page-1 .txt-content p{
+        color: #896c49;
+    }
+
+    .dn-end-page-2 .logo{
+        background-image: url(../img/dn-logo-2.png);
+        width: 134px;
+    }
+
+    .dn-end-page-2 .logo2{
+        background-image: url(../img/dn-logo-1.png);
+        width: 250px;
+    }
+    .dn-end-page-2 .content{
+        height: 440px;
+    }
+
+
+    .dn-end-page-3{
+        background-color: #e1041b;
+    }
+    .dn-end-page-3 .logo {
+        background-image: url(../img/dn-logo-3.png);
+        width: 250px;
+    }
+
+@media screen and (max-width: 1280px) {
+    .dn-end-page-1{
+        background-image: url(../img/dn-bg-2-1.jpg);
+    }
+    .dn-end-page-1 .content{
+        position: relative;
+        left: 200px;
+        top: 0px;
+    }
+    .dn-end-page-1 .form{
+        margin-top: 30px;
+    }
+    .dn-end-page-1 .logo{
+        width: 300px;
+        margin-top: 60px;
+    }
+}
+@media screen and (max-width: 950px) {
+    .dn-end-page-1 .content{
+        left: 0;
+        top: 0px;
+    }
+}
 @media screen and (max-width: 750px) {
     .index-page .logo,
     .index-page .title{
@@ -348,6 +433,44 @@ body{
         width: 290px;
         height: 100px;
     }
+
+    .dn-page .logo{
+        width: 300px;
+        height: 100px;
+    }
+    .dn-page .title{
+        width: 300px;
+    }
+    .dn-page .content{
+        height: auto;
+    }
+
+    .dn-end-page-1 {
+        background-image: url(../img/dr-bg-m.jpg);
+    }
+    .dn-end-page-1 .txt-content{
+        background-color: rgba(0,0,0,.25);
+        color: #fff;
+        border-color: #fff;
+    }
+    .dn-end-page-1 .txt-content i{
+        background-image: url(../img/icon2.png);
+    }
+
+    .dn-end-page-1 .txt-content p{
+        color: #fff;
+    }
+
+    .dn-end-page-2 .logo{
+        width: 134px;
+    }
+
+    .dn-end-page-2 .logo2{
+        background-image: url(../img/dn-logo-1.png);
+    }
+    .dn-end-page-3{
+        background-color: #e1041b;
+    }
 }
 @media screen and (max-width: 500px) {
     .index-page .content{
@@ -376,6 +499,19 @@ body{
         background-color: rgba(0,0,0,.4);
     }
 
+    /* 德诺 */
+    .dn-page {
+        background-image: url(../img/dr-bg-m.jpg);
+        background-size: 100%;
+    }
+    .dn-page .form {
+        background-color: rgba(0,0,0,.25);
+        border: none;
+        margin-top: 45px;
+    }
+    .dn-end-page-1 .content{
+        top: 50px;
+    }
 }
 @media screen and (max-width: 414px) {
     .index-page .logo,
@@ -397,15 +533,26 @@ body{
         height: 80px;
         margin-top: 100px;
     }
-
+    .index-end-page .txt-content i{
+        width: 50px;
+        height: 50px;
+        top: -26px;
+    }
     .index-end-page .txt-content strong{
-        font-size: 18px;
+        font-size: 16px;
     }
     .index-end-page .txt-content p{
-        font-size: 16px;
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+    .index-end-page .end-t1{
+        margin: 10px 0;
     }
     .index-end-page .txt-content{
         padding: 30px;
+    }
+    .index-end-page .end-tip-txt{
+        font-size: 12px;
     }
     /* end2 */
     .index-end-page-2 .logo {
@@ -421,14 +568,71 @@ body{
 
     /* 艾仕 */
     .as-page .logo{
-        height: 95px;
-        margin-top: 50px;
+        height: 85px;
+        margin-top: 40px;
         width: 250px;
+        margin-bottom: 0;
+    }
+    .as-page .title{
+        margin-top: 0;
     }
     .as-page .bg1{
         background-size: 110%;
     }
+    .as-page .form{
+        padding: 20px;
+        margin-top: 100px;
+        background-color: rgba(0,0,0,.25);
+    }
+    .as-page .form .txt p{
+        font-size: 12px;
+        line-height: 20px;
+    }
+    .as-page .form .inputs span{
+        font-size: 18px;
+        margin-right: 10px;
+    }
+    .as-page .form .inputs input{
+        padding: 0px 5px;
+    }
+    .as-page .form .buttons button{
+        margin: 10px 20px;
+        padding: 5px 15px;
+    }
+    .as-page-end .txt-content i{
+        width: 50px;
+        height: 50px;
+        top: -27px;
+    }
+    .as-page-end .form{
+        margin-top: 66px;
+        background: transparent;
+    }
+    .as-page-end .txt-content p{
+        font-size: 14px;
+        margin-bottom: 5px;
+    }
+    .as-page-end .end-t1{
+        margin: 15px 0;
+    }
+    .as-page-end .txt-content{
+        padding: 30px 5px 10px 5px;
+    }
+    .as-page-end .end-tip-txt{
+        font-size: 10px;
+    }
+    .as-page-end .txt-content strong{
+        font-size: 14px;
+    }
 
+    /* 德诺 */
+    .dn-page .logo {
+        width: 300px;
+        height: 100px;
+    }
+    .dn-end-page-2 .logo{
+        width: 120px;
+    }
 }
 
 @media screen and (max-width: 375px) {
@@ -442,7 +646,10 @@ body{
         padding: 0;
     }
     .index-end-page .txt-content{
-        padding: 10px;
+        padding: 30px 10px 10px 10px;
+    }
+    .index-end-page .form{
+        margin-top: -10px;
     }
 
     /* end2 */
@@ -453,6 +660,7 @@ body{
         width: 200px;
         margin: auto;
         right: 0;
+        background-position: center;
     }
 
 
@@ -460,6 +668,14 @@ body{
     .as-page-end-2 .txt-content{
         padding: 30px 10px 10px 10px;
     }
+    .as-page .bg1 {
+        background-size: 120%;
+    }
+    .as-page .content {
+        padding: 20px;
+    }
+    
+
 }
 
 @media screen and (max-width: 320px) {
@@ -488,5 +704,20 @@ body{
     }
     .index-end-page .m-h-box {
         padding: 5px;
+    }
+    .index-end-page .end-tip-txt{
+        font-size: 10px;
+    }
+
+    .dn-page .logo {
+        width: 200px;
+        height: 73px;
+    }
+    .dn-page .title {
+        width: 200px;
+        margin: 10px auto 5px auto;
+    }
+    .dn-page .form .txt p{
+        font-size: 10px;
     }
 }

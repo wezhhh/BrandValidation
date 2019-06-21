@@ -22,7 +22,7 @@
                     </div>
                     <div class="buttons">
                         <button onclick="select()">查询</button>
-                        <button>重置</button>
+                        <button onclick="reset()">重置</button>
                     </div>
                     <div class="txt">
                         <p>检查标贴的完好性，刮开标贴上面的涂层。</p>
@@ -46,6 +46,11 @@
             }else{
                 window.location.href = '/index/api/verification?site=1&code='+code+'&brand_id=3';
             }
+        }
+
+        //重置事件
+        function reset() {
+            $('input[name=code]').val('');
         }
     </script>
 </html>

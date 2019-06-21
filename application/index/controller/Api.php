@@ -36,10 +36,7 @@ class Api extends Base
                     $arr['time'] = date('Y-m-d H:i:s',$data['query_time']);
 //                    $this->returnJson('success','您查询的产品为<b>第'.($data['count']+1).'次验证');
                 }
-            }else{
-//                $this->returnJson('error','没有此防伪码,请核对您输入的防伪码是否和商品上的防伪码一致,如果一致则可能为假货。');
             }
-
 
             //brand_id  1德国艾仕壁纸 2 DENO 德诺壁纸软装 3 HARVEST 臻仕家居
             //如果为臻仕页面 且当前防伪码属于蓝色情人
@@ -56,6 +53,14 @@ class Api extends Base
                 $class = 2;
             }else if($site == 2){
                 //只属于艾仕
+                $class = 1;
+            }else if($site == 3 && $data['cooperator_id'] == 2){
+                //如果为德诺页面 且当前防伪码属于兰博基尼
+                $class = 2;
+            }else if($site == 3 && $data['cooperator_id'] == 3){
+                //如果为德诺页面 且当前防伪码属于可口可乐
+                $class = 3;
+            }else if($site == 3){
                 $class = 1;
             }else{
                 $this->returnJson('success','404');
